@@ -1,0 +1,4642 @@
+#:import Snackbar kivymd.uix.snackbar.Snackbar
+
+<Separator@Widget>:
+    canvas:
+        Color:
+            rgba: 0, 0, 0, .4
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<HSeparator@Separator>:
+    size_hint_y: None
+    height: dp(1)
+
+<MySeparator@Widget>:
+    canvas:
+        Color:
+            rgba: 0, 0, 0, 0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<HoSeparator@MySeparator>:
+    size_hint_y: None
+    height: dp(1)
+
+
+
+<BoyConnected>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"EVEREST SPICES"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394 ,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,30,25,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            #View Bill
+            MDLabel:
+                text: 'View Bill'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                color: rgba("#0e1574ff")
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    md_bg_color: 1, 0, 1, 1
+                    on_press: root.viewAunBills()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    md_bg_color: 1, 0, 1, 1
+                    on_press: root.viewBalBills()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewSanBills()
+            HSeparator
+            #Update Bill
+            MDLabel:
+                text: 'Update Bill'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.updateaunbill()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.updatebalbill()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.updatesanbill()
+            HSeparator
+
+            #Delivery of masala
+            MDLabel:
+                text: 'Delivery'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.aundelivery()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.baldelivery()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.sandelivery()
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-right-bold'
+            on_action_button: root.next()
+
+<BoyViewAunBills>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Bills"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BoyViewBalBills>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Bills"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BoyViewSanBills>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Bills"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<AunContent>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "120dp"
+
+    MDTextField:
+        hint_text: "Enter Amount"
+        required: True
+        helper_text_mode: "on_error"
+        helper_text: "No Amount Entered"
+        id: aunqty
+        multiline:False
+        input_filter: 'float'
+        font_size: '20sp'
+        font_name: 'Mukta-SemiBold'
+
+<BalContent>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "120dp"
+
+    MDTextField:
+        hint_text: "Enter Amount"
+        required: True
+        helper_text_mode: "on_error"
+        helper_text: "No Amount Entered"
+        id: balqty
+        multiline:False
+        input_filter: 'float'
+        font_size: '20sp'
+        font_name: 'Mukta-SemiBold'
+
+<SanContent>
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "120dp"
+
+    MDTextField:
+        hint_text: "Enter Amount"
+        required: True
+        helper_text_mode: "on_error"
+        helper_text: "No Amount Entered"
+        id: sanqty
+        multiline:False
+        input_filter: 'float'
+        font_size: '20sp'
+        font_name: 'Mukta-SemiBold'
+
+<UpdateAundhBill>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Update Bill"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,300]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: aunretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+
+                MDLabel:
+                    id: search_aun_retailer  #retailer does not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+
+                Spinner:
+                    id: aunspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Retailer List'
+                    on_text: aunretailername.text = self.text
+
+                GridLayout:
+                    cols: 2
+                    spacing:10
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search_aun_ret(aunretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Print'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.printret(aunretailername.text)
+                HoSeparator
+                HoSeparator
+                HoSeparator
+
+                MDTextField:
+                    hint_text: "Enter Masala Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Masala Name"
+                    id: aunmasalaname
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+
+                MDLabel:
+                    id: search_masala   #masala not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+
+                MDTextField:
+                    hint_text: "Enter Return Quantity"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Quantity Entered"
+                    id: aunquantity
+                    input_filter: 'int'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+
+                Spinner:
+                    id: masspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Masala List'
+                    on_text: aunmasalaname.text = self.text
+
+
+                GridLayout:
+                    cols: 2
+                    spacing:10
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasala(aunmasalaname.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Return Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasforaundh(aunmasalaname.text, aunquantity.text, aunretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Expired Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.aun_expiry(aunmasalaname.text, aunquantity.text, aunretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.aun_ret_submit(aunretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.save_aun_bill()
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<UpdateBalewadiBill>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Update Bill"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,300]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: balretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+
+                MDLabel:
+                    id: search_bal_retailer  #retailer does not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+
+                Spinner:
+                    id: balspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Retailer List'
+                    on_text: balretailername.text = self.text
+
+                GridLayout:
+                    cols: 2
+                    spacing:10
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search_bal_ret(balretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Print'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.printret(balretailername.text)
+                HoSeparator
+                HoSeparator
+                HoSeparator
+
+                MDTextField:
+                    hint_text: "Enter Masala Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Masala Name"
+                    id: balmasalaname
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+
+                MDLabel:
+                    id: search_masala   #masala not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+
+                MDTextField:
+                    hint_text: "Enter Return Quantity"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Quantity Entered"
+                    id: balquantity
+                    input_filter: 'int'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+
+                Spinner:
+                    id: masspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Masala List'
+                    on_text: balmasalaname.text = self.text
+
+
+                GridLayout:
+                    cols: 2
+                    spacing:10
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasala(balmasalaname.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Return Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasforbalewadi(balmasalaname.text, balquantity.text, balretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Expired Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.bal_expiry(balmasalaname.text, balquantity.text, balretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.bal_ret_submit(balretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.save_bal_bill()
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<UpdateSangviBill>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Update Bill"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,300]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: sanretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+
+                MDLabel:
+                    id: search_san_retailer  #retailer does not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+
+                Spinner:
+                    id: sanspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Retailer List'
+                    on_text: sanretailername.text = self.text
+
+                GridLayout:
+                    cols: 2
+                    spacing:10
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search_san_ret(sanretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Print'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.printret(sanretailername.text)
+                HoSeparator
+                HoSeparator
+                HoSeparator
+
+                MDTextField:
+                    hint_text: "Enter Masala Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Masala Name"
+                    id: sanmasalaname
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+
+                MDLabel:
+                    id: search_masala   #masala not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+
+                MDTextField:
+                    hint_text: "Enter Return Quantity"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Quantity Entered"
+                    id: sanquantity
+                    input_filter: 'int'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+
+                Spinner:
+                    id: masspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Masala List'
+                    on_text: sanmasalaname.text = self.text
+
+
+                GridLayout:
+                    cols: 2
+                    spacing:10
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasala(sanmasalaname.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Return Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasforsangvi(sanmasalaname.text, sanquantity.text, sanretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Expired Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.san_expiry(sanmasalaname.text, sanquantity.text, sanretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.san_ret_submit(sanretailername.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.save_san_bill()
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<DeliveryAundh>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+        MDToolbar:
+            title:"Aundh Delivery"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,170]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: aunretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                MDLabel:
+                    id: search_aun_retailer  #retailer does not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+                HoSeparator
+                Spinner:
+                    id: aunspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5,.5)}
+                    text: 'Retailer List'
+                    on_text: aunretailername.text = self.text
+                HoSeparator
+                HoSeparator
+                MDTextField:
+                    hint_text: "Enter amount"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Amount entered"
+                    id: aunamount
+                    input_filter: 'float'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                MDTextField:
+                    hint_text: "Enter Mode of Payment"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Mode entered"
+                    id: aunmode
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+
+                HoSeparator
+                HoSeparator
+                MDLabel:
+                    id: aundelivery
+                    font_name: 'VarelaRound'
+                    font_size: '18sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                GridLayout:
+                    cols: 2
+                    spacing:10
+                    pos_hint: {"center_y": .5,"center_x": .6}
+                    MDRaisedButton:
+                        valign: 'center'
+                        text: 'Search Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search_aun_ret(aunretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.aundelivery(aunretailername.text, aunamount.text, aunmode.text)
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y:None
+                    height: self.minimum_height
+                    pos_hint: {"center_x": .7,"center_y": .1}
+                    spacing:10
+                    MDRaisedButton:
+                        valign: 'center'
+                        text: 'Check Previous History'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.previous_history(aunretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save Changes'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.aunsavechange()
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<DeliveryBalewadi>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+        MDToolbar:
+            title:"Balewadi Delivery"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,200]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:20
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: balretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                MDLabel:
+                    id: search_bal_retailer  #retailer does not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+                HoSeparator
+                Spinner:
+                    id: balspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5,.5)}
+                    text: 'Retailer List'
+                    on_text: balretailername.text = self.text
+                HoSeparator
+                HoSeparator
+                MDTextField:
+                    hint_text: "Enter amount"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Amount entered"
+                    id: balamount
+                    input_filter: 'float'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                MDTextField:
+                    hint_text: "Enter Mode of Payment"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Mode entered"
+                    id: balmode
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                HoSeparator
+                HoSeparator
+                MDLabel:
+                    id: baldelivery
+                    font_name: 'VarelaRound'
+                    font_size: '18sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                GridLayout:
+                    cols: 2
+                    spacing:10
+                    pos_hint: {"center_y": .5,"center_x": .6}
+                    MDRaisedButton:
+                        valign: 'center'
+                        text: 'Search Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search_bal_ret(balretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.baldelivery(balretailername.text, balamount.text, balmode.text)
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y:None
+                    height: self.minimum_height
+                    pos_hint: {"center_x": .7,"center_y": .1}
+                    spacing:10
+                    MDRaisedButton:
+                        valign: 'center'
+                        text: 'Check Previous History'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.previous_history(balretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save Changes'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.balsavechange()
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<DeliverySangvi>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+        MDToolbar:
+            title:"Sangvi Delivery"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,170]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: sanretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                MDLabel:
+                    id: search_san_retailer  #retailer does not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+                HoSeparator
+                Spinner:
+                    id: sanspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5,.5)}
+                    text: 'Retailer List'
+                    on_text: sanretailername.text = self.text
+                HoSeparator
+                HoSeparator
+                # taking amount paid
+                MDTextField:
+                    hint_text: "Enter amount"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Amount entered"
+                    id: sanamount
+                    input_filter: 'float'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                MDTextField:
+                    hint_text: "Enter Mode of Payment"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Mode entered"
+                    id: sanmode
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                HoSeparator
+                HoSeparator
+                MDLabel:
+                    id: sandelivery
+                    font_name: 'VarelaRound'
+                    font_size: '18sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                GridLayout:
+                    cols: 2
+                    spacing:10
+                    pos_hint: {"center_y": .5,"center_x": .6}
+                    MDRaisedButton:
+                        valign: 'center'
+                        text: 'Search Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search_san_ret(sanretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.sandelivery(sanretailername.text, sanamount.text, sanmode.text)
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y:None
+                    height: self.minimum_height
+                    pos_hint: {"center_x": .7,"center_y": .1}
+                    spacing:10
+                    MDRaisedButton:
+                        valign: 'center'
+                        text: 'Check Previous History'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.previous_history(sanretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save Changes'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.sansavechange()
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+
+
+<BoyNextConnected>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"EVEREST SPICES"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394 ,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,30,25,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            #View Bill
+            MDLabel:
+                text: 'View Pending Retailers'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                color: rgba("#0e1574ff")
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    md_bg_color: 1, 0, 1, 1
+                    on_press: root.viewpendaun()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    md_bg_color: 1, 0, 1, 1
+                    on_press: root.viewpendbal()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewpendsan()
+
+            HSeparator
+            #Out Stock
+            MDLabel:
+                text: 'Out Stock'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                color: rgba("#0e1574ff")
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    md_bg_color: 1, 0, 1, 1
+                    on_press: root.viewaunmasala()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    md_bg_color: 1, 0, 1, 1
+                    on_press: root.viewbalmasala()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '20sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewsanmasala()
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BoyAunPendingRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Pending Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: pending_aun
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BoyBalPendingRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Pending Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: pending_bal
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BoySanPendingRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Pending Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: pending_san
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BoyAunViewStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Going Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_aun_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BoyBalViewStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Going Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_bal_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BoySanViewStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Going Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_san_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerConnected>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"EVEREST SPICES"
+            font_name: 'Mukta-Medium'
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .4 ,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,30,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 15
+
+            #View Bills
+            MDLabel:
+                text: 'View Bills'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:8
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewAunBills()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewBalBills()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewSanBills()
+
+            HSeparator
+            #View Updates
+            MDLabel:
+                text: 'View Updates'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:8
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewAunUpdates()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewBalUpdates()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewSanUpdates()
+            HSeparator
+
+            #View Out Stock
+            MDLabel:
+                text: 'Delivery Stock'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                color: rgba("#0e1574ff")
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    md_bg_color: 1, 0, 1, 1
+                    on_press: root.viewaunmasala()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    md_bg_color: 1, 0, 1, 1
+                    on_press: root.viewbalmasala()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewsanmasala()
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-right-bold'
+            on_action_button: root.next()
+
+<OwnerViewAunBills>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Bills"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerViewBalBills>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Bills"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerViewSanBills>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Bills"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerViewAunUpdates>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Updates"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerViewBalUpdates>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Updates"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerViewSanUpdates>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Updates"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<AunViewStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Going Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_aun_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BalViewStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Going Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_bal_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SanViewStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Going Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_san_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+
+
+<OwnerNextConnected>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"EVEREST SPICES"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,30,25,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            MDLabel:
+                text: 'Godown'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'View Masala'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewmasala()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Search Masala'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.searchsc()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Update Stock'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.updatestk()
+            HSeparator
+
+            #Search Retailer
+            MDLabel:
+                text: 'Search Retailer'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.aunsearchret()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.balsearchret()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.sansearchret()
+            HSeparator
+
+            #View Retailer
+            MDLabel:
+                text: 'View Retailer'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.aunviewret()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.balviewret()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.sanviewret()
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-right-bold'
+            left_action_items: [["arrow-left-bold",lambda x: root.back()]]
+            on_action_button: root.next()
+
+<ViewStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Godown Stock"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SearchMasala>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Search Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDTextField:
+                    hint_text: "Enter Masala Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Masala Name"
+                    id: masalaname
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+    				background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Search'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.search(masalaname.text)
+                MDLabel:
+                    id: search_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<UpdateStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Update Stock"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,200]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 30
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDTextField:
+                    hint_text: "Enter Masala Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Masala Name"
+                    id: stockname
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+
+                MDLabel:
+                    id: search_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+                MDTextField:
+                    hint_text: "Enter Quantity"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "Not Quantity Entered"
+                    id: stockquantity
+                    input_filter: 'int'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+
+                HoSeparator
+                Spinner:
+                    id: masspinner
+                    size_hint: None, None
+                    size: dp(300),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Masala list'
+                    on_text: stockname.text = self.text
+                HoSeparator
+
+                GridLayout:
+                    cols: 2
+                    spacing: 10
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search(stockname.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Update'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.updatestk(stockname.text, stockquantity.text)
+
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save Changes'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        size_hint_x: 1
+                        width: dp(100)
+                        on_press: root.save()
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<AunSearchRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Retailers"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,125]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: aunretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+    				background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Search'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.search_aun_ret(aunretailername.text)
+                MDLabel:
+                    id: search_aun_retailer
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BalSearchRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Retailers"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,125]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Reatiler Name"
+                    id: balretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+    				background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Search'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.search_bal_ret(balretailername.text)
+                MDLabel:
+                    id: search_bal_retailer
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SanSearchRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,125]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: sanretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+    				background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Search'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.search_san_ret(sanretailername.text)
+                MDLabel:
+                    id: search_san_retailer
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<AunViewRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_aun_retailer
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+                MDRaisedButton:
+                    valign:'right'
+                    text: 'Pending retailer'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.pending_aun_ret()
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BalViewRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_bal_retailer
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Pending retailer'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.pending_bal_ret()
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SanViewRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_san_retailer
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Pending retailer'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.pending_san_ret()
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<AunPendingRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Pending Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: pending_aun
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BalPendingRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Pending Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: pending_bal
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SanPendingRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Pending Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: pending_san
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerNextNextConnected>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"EVEREST SPICES"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,30,15,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            MDLabel:
+                text: 'Reset Aundh Utilities'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            GridLayout:
+                cols: 2
+                spacing: 10
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Bills'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.ResetAunBill()
+                    on_release: Snackbar(text="Aundh bills reseted").show()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Retailer'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.AunRetReset()
+                    on_release: Snackbar(text="Aundh Retailers reseted").show()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Updated Bills'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.ResetAunUpdate()
+                    on_release: Snackbar(text="Aundh updates reseted").show()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Delivery Stock'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.ResetAunStock()
+                    on_release: Snackbar(text="Aundh delivery stock reseted").show()
+
+            HSeparator
+
+            MDLabel:
+                text: 'Reset Balewadi Utilities'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            GridLayout:
+                cols: 2
+                spacing: 10
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Bills'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.ResetAunBill()
+                    on_release: Snackbar(text="Balewadi bills reseted").show()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Retailer'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.BalRetReset()
+                    on_release: Snackbar(text="Balewadi Retailers reseted").show()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Updated Bills'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.ResetBalUpdate()
+                    on_release: Snackbar(text="Balewadi updates reseted").show()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Delivery Stock'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.ResetBalStock()
+                    on_release: Snackbar(text="Balewadi delivery stock reseted").show()
+
+            HSeparator
+            #View Retailer
+            MDLabel:
+                text: 'Reset Sangvi Utilities'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            GridLayout:
+                cols: 2
+                spacing: 10
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Bills'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.ResetSanBill()
+                    on_release: Snackbar(text="Sangvi bills reseted").show()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Retailer'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.SanRetReset()
+                    on_release: Snackbar(text="Sangvi Retailers reseted").show()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Updated Bills'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.ResetSanUpdate()
+                    on_release: Snackbar(text="Sangvi updates reseted").show()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Delivery Stock'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.ResetSanStock()
+                    on_release: Snackbar(text="Sangvi delivery stock reseted").show()
+
+            HSeparator
+            MDLabel:
+                text: 'View Transactions'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            GridLayout:
+                cols: 2
+                spacing: 10
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewAunTransaction()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewBalTransaction()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewSanTransaction()
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerViewAundhTransaction>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Transactions"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerViewBalewadiTransaction>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Transactions"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<OwnerViewSangviTransaction>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Transactions"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+
+
+
+<SalesManConnected>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"EVEREST SPICES"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,30,25,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            #Create Bill
+            MDLabel:
+                text: 'Create Bill'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.aundhbills()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.balewadibills()
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.sangvibills()
+
+            HSeparator
+            #view Bill
+            MDLabel:
+                text: 'View Bill'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: '  Aundh  '
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewAunBills()
+                MDRaisedButton:
+                    valign:'center'
+                    text: ' Balewadi '
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewBalBills()
+                MDRaisedButton:
+                    valign:'center'
+                    text: '  Sangvi  '
+                    font_size: '16sp'
+                    on_press: root.viewSanBills()
+
+
+            HSeparator
+            #Godown Stock
+            MDLabel:
+                text: 'Stock'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Godown'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewStock()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Aundh'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewaunstock()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Balewadi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewbalstock()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: 'Sangvi'
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press: root.viewsanstock()
+
+            HSeparator
+
+            MDLabel:
+                text: 'View Retailer'
+                font_name: 'VarelaRound'
+                font_size: '20sp'
+                text_size: root.width-14, 14
+                color: rgba("#0e1574ff")
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .7,"center_y": .5}
+                spacing:10
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: '  Aundh  '
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press:root.aunviewret()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: ' Balewadi '
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press:root.balviewret()
+
+                MDRaisedButton:
+                    valign:'center'
+                    text: '  Sangvi  '
+                    font_size: '16sp'
+                    font_name: 'VarelaRound'
+                    on_press:root.sanviewret()
+
+<AunCreateBill>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+        MDToolbar:
+            title:"Aundh Bill"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,250]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing:20
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: aunretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size: self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                MDLabel:
+                    id: search_aun_retailer  #retailer does not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                Spinner:
+                    id: aunspinner
+                    size_hint: None, None
+                    size: dp(260),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Retailer List'
+                    #values: 'Home', 'Work', 'Other', 'Custom'
+                    on_text: aunretailername.text = self.text
+                GridLayout:
+                    cols: 2
+                    spacing:10
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search_aun_ret(aunretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Print'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.printret(aunretailername.text)
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                MDTextField:
+                    hint_text: "Enter Masala Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Masala Name"
+                    id: aunmasalaname
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size: self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                MDLabel:
+                    id: search_masala   #masala not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                MDTextField:
+                    hint_text: "Enter Quantity"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Quantity Entered"
+                    id: aunquantity
+                    input_filter: 'int'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                Spinner:
+                    id: masspinner
+                    size_hint: None, None
+                    size: dp(260),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Masala List'
+                    #values: 'Home', 'Work', 'Other', 'Custom'
+                    on_text: aunmasalaname.text = self.text
+                GridLayout:
+                    cols: 2
+                    rows: 2
+                    spacing:10
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasala(aunmasalaname.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasforaundh(aunmasalaname.text, aunquantity.text, aunretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.aun_ret_submit(aunretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.save_aun_bill()
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<BalCreateBill>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+        MDToolbar:
+            title:"Balewadi Bill"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,250]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing:20
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: balretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size: self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                MDLabel:
+                    id: search_bal_retailer  #retailer does not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                Spinner:
+                    id: balspinner
+                    size_hint: None, None
+                    size: dp(260),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Retailer List'
+                    on_text: balretailername.text = self.text
+                GridLayout:
+                    cols: 2
+                    spacing:10
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search_bal_ret(balretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Print'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.printret(balretailername.text)
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                MDTextField:
+                    hint_text: "Enter Masala Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Masala Name"
+                    id: balmasalaname
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size: self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                MDLabel:
+                    id: search_masala   #masala not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                MDTextField:
+                    hint_text: "Enter Quantity"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Quantity Entered"
+                    id: balquantity
+                    input_filter: 'int'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                Spinner:
+                    id: masspinner
+                    size_hint: None, None
+                    size: dp(260),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Masala List'
+                    #values: 'Home', 'Work', 'Other', 'Custom'
+                    on_text: balmasalaname.text = self.text
+                GridLayout:
+                    cols: 2
+                    rows: 2
+                    spacing:10
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasala(balmasalaname.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasforbalewadi(balmasalaname.text, balquantity.text, balretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.bal_ret_submit(balretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.save_bal_bill()
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SanCreateBill>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+        MDToolbar:
+            title:"Sangvi Bill"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,250]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing:20
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+                MDTextField:
+                    hint_text: "Enter Retailer Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Retailer Name"
+                    id: sanretailername
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size: self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                MDLabel:
+                    id: search_san_retailer  #retailer does not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                Spinner:
+                    id: sanspinner
+                    size_hint: None, None
+                    size: dp(260),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Retailer List'
+                    #values: 'Home', 'Work', 'Other', 'Custom'
+                    on_text: sanretailername.text = self.text
+                GridLayout:
+                    cols: 2
+                    spacing:10
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.search_san_ret(sanretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Print'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.printret(sanretailername.text)
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                HoSeparator
+                MDTextField:
+                    hint_text: "Enter Masala Name"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Masala Name"
+                    id: sanmasalaname
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size: self.texture_size
+                    size: dp(260),dp(40)
+                    on_text:self.text = self.text.upper()
+                MDLabel:
+                    id: search_masala   #masala not exist
+                    font_name: 'VarelaRound'
+                    font_size: '15sp'
+                    text_size: root.width-14, 14
+                    color: rgba("#0e1574ff")
+                MDTextField:
+                    hint_text: "Enter Quantity"
+                    required: True
+                    helper_text_mode: "on_error"
+                    helper_text: "No Quantity Entered"
+                    id: sanquantity
+                    input_filter: 'int'
+                    multiline:False
+                    font_size: '20sp'
+                    font_name: 'Mukta-SemiBold'
+                    background_color: 1,1,1,0.5
+                    size_hint_y:None
+                    size:
+                        self.texture_size
+                    size: dp(260),dp(40)
+                Spinner:
+                    id: masspinner
+                    size_hint: None, None
+                    size: dp(260),dp(40)
+                    pos_hint: {'center': (.5, .5)}
+                    text: 'Masala List'
+                    on_text: sanmasalaname.text = self.text
+                GridLayout:
+                    cols: 2
+                    rows: 2
+                    spacing:10
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Search Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasala(sanmasalaname.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit Masala'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.searchmasforsangvi(sanmasalaname.text, sanquantity.text, sanretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Submit Retailer'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.san_ret_submit(sanretailername.text)
+                    MDRaisedButton:
+                        valign:'center'
+                        text: 'Save'
+                        font_size: '16sp'
+                        font_name: 'VarelaRound'
+                        on_press: root.save_san_bill()
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<ViewAunBills>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Bills"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<ViewBalBills>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Bills"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<ViewSanBills>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Bills"
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content','bars']
+        pos_hint: {"center_y": .39,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,10,150]
+            size_hint_y:None
+            height: self.minimum_height
+
+            MDCard:
+                orientation: "vertical"
+                pos_hint:{ "center_x" :0.5, "center_y": 0.5}
+                padding: "8dp"
+            MDLabel:
+                id: mylabel
+                font_size: '14sp'
+                font_name: 'VarelaRound'
+                size_hint_x:1.0
+                size_hint_y:None
+                text_size: self.width,None
+                height: self.texture_size[1]
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SalesViewStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Godown Stock"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+
+                MDLabel:
+                    id: view_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SalesViewAunStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Going Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_aun_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SalesViewBalStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Going Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_bal_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SalesViewSanStock>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Going Masala"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_san_masala
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SalesAunViewRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Aundh Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_aun_retailer
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SalesBalViewRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Balewadi Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_bal_retailer
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
+
+<SalesSanViewRetailer>:
+    BoxLayout:
+        id: AfterLogin_Layout
+        orientation: 'vertical'
+        spacing: 20
+
+        MDToolbar:
+            title:"Sangvi Retailer"
+            left_action_items: [["logout",lambda x: root.disconnect()]]
+            right_action_items: [["dots-vertical",lambda x: app.navigation_draw()]]
+            elevation: 8
+            font_size: 16
+        Widget:
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        type:['content']
+        pos_hint: {"center_y": .394,"center_x": .52}
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [10,20,20,150]
+            size_hint_y:None
+            height: self.minimum_height
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y:None
+                height: self.minimum_height
+                pos_hint: {"center_x": .5,"center_y": .5}
+                spacing:10
+
+                MDLabel:
+                    id: view_san_retailer
+                    font_size: '14sp'
+                    font_name: 'VarelaRound'
+                    size_hint_x:1.0
+                    size_hint_y:None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+
+    MDBottomAppBar:
+        MDToolbar:
+            font_name: 'Mukta-Medium'
+            mode:'end'
+            type:'bottom'
+            icon:'arrow-left-bold'
+            on_action_button: root.back()
